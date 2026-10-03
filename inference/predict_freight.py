@@ -4,7 +4,8 @@ import joblib
 import pandas as pd
 import numpy as np
 
-MODEL_PATH = Path("../models/predict_freight_model.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_PATH = BASE_DIR / "models" / "predict_freight_model.pkl"
 
 FEATURES = ["Dollars"]
 

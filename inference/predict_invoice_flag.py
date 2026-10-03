@@ -3,8 +3,9 @@ from pathlib import Path
 import joblib
 import pandas as pd
 
-MODEL_PATH = Path("../models/predict_flag_invoice.pkl")
-SCALER_PATH = Path("../models/scaler.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_PATH = BASE_DIR / "models" / "predict_flag_invoice.pkl"
+SCALER_PATH = BASE_DIR / "models" / "scaler.pkl"
 
 FEATURES = [
     "invoice_quantity",
