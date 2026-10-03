@@ -1,9 +1,15 @@
+from functools import lru_cache      # FIX: load once, not on every prediction
+from pathlib import Path
 import joblib
 import pandas as pd
+import numpy as np
 
-MODEL_PATH = r"C:\Users\Ajeyata Maurya\Desktop\Data Analytics Projects\Invoice Intelligence ML Project\models\predict_freight_model.pkl"
+MODEL_PATH = Path("../models/predict_freight_model.pkl")
 
-def load_model(model_path: str = MODEL_PATH):
+FEATURES = ["Dollars"]
+
+@lru_cache(maxsize=1)
+def load_model(model_path: Path = MODEL_PATH):
     """
     Load trained freight cost prediction model.
     """
@@ -26,6 +32,13 @@ def predict_freight_cost(input_data):
 
     model = load_model()
     input_df = pd.DataFrame(input_data)
+
+    # FIX: check required column
+    missing = [c for c in FEATURES if c not in input_df.columns]
+    if missing:
+        raise ValueError(f"Missing required column(s): {missing}")
+
+    preds = np.asarray(model.predict(input_df[FEATURES])).ravel()
     input_df['Predicted_Freight'] = model.predict(input_df).round()
     return input_df
 
