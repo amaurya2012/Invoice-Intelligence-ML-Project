@@ -39,7 +39,7 @@ def predict_freight_cost(input_data):
         raise ValueError(f"Missing required column(s): {missing}")
 
     preds = np.asarray(model.predict(input_df[FEATURES])).ravel()
-    input_df['Predicted_Freight'] = model.predict(input_df).round()
+    input_df['Predicted_Freight'] = np.clip(preds, 0, None).round(2)
     return input_df
 
 if __name__ == "__main__":

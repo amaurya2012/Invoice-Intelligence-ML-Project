@@ -8,6 +8,5 @@ venv/
 env/
 
 # Large Model weights & Database
-models/*.pkl
 *.db
 *.sqlite3
