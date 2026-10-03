@@ -3,11 +3,6 @@
 
 An end-to-end machine learning project that helps finance and procurement teams **estimate freight cost** for vendor invoices and **flag risky invoices** for manual review. Two models are trained on a SQLite inventory database and served through a Streamlit web app.
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange)
-![Streamlit](https://img.shields.io/badge/Streamlit-App-red)
-![SQLite](https://img.shields.io/badge/SQLite-Data-lightgrey)
-
 ---
 
 ## 📌 Table of Contents
